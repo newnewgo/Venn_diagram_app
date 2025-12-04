@@ -170,18 +170,6 @@ else:
         st.pyplot(fig)
 
 
-# In[2]:
-
-
-pip install streamlit
-
-
-# In[4]:
-
-
-pip install matplotlib-venn
-
-
 # In[ ]:
 
 
