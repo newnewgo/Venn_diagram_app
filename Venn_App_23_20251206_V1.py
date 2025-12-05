@@ -159,7 +159,59 @@ else:
     abc_color = mix_colors(a_color, b_color, c_color)
 
     # 防呆
-    if abc > min(ab,
+    if abc > min(ab, ac, bc):
+        st.error("❌ ABC（三交集）不得大於任兩集合交集")
+    else:
+        fig, ax = plt.subplots(figsize=(fig_size, fig_size))
+
+        v = venn3(
+            subsets=(a_size, b_size, ab, c_size, ac, bc, abc),
+            set_labels=("A", "B", "C") if show_labels else ("", "", ""),
+            ax=ax
+        )
+
+        # Set 顏色
+        if v.get_patch_by_id("100"): v.get_patch_by_id("100").set_color(a_color)
+        if v.get_patch_by_id("010"): v.get_patch_by_id("010").set_color(b_color)
+        if v.get_patch_by_id("001"): v.get_patch_by_id("001").set_color(c_color)
+
+        # 自動混色交集
+        patch_colors = {
+            "110": ab_color,
+            "101": ac_color,
+            "011": bc_color,
+            "111": abc_color
+        }
+
+        for patch_id, color in patch_colors.items():
+            patch = v.get_patch_by_id(patch_id)
+            if patch:
+                patch.set_color(color)
+                patch.set_alpha(0.55)
+
+        # ---------- 套用文字設定 ----------
+        # Set 標籤（A/B/C）
+        for t in v.set_labels:
+            if t:
+                if show_labels:
+                    t.set_fontsize(label_fontsize)
+                    t.set_color(label_color)
+                else:
+                    t.set_text("")
+
+        # 區塊數字
+        for t in v.subset_labels:
+            if t:
+                if show_values:
+                    t.set_fontsize(value_fontsize)
+                    t.set_color(value_color)
+                else:
+                    t.set_text("")
+
+        if chart_title.strip():
+            plt.title(chart_title)
+
+        st.pyplot(fig)
 
 
 # In[ ]:
