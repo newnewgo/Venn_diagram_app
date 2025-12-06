@@ -6,6 +6,11 @@
 
 import streamlit as st
 import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']  # Windows
+# plt.rcParams['font.sans-serif'] = ['AppleGothic']       # macOS
+# plt.rcParams['font.sans-serif'] = ['Noto Sans CJK JP'] # Linux/其他系統
+plt.rcParams['axes.unicode_minus'] = False  # 負號正確顯示
+
 from matplotlib_venn import venn2, venn3
 
 # 顏色混合函式（RGB 加權平均）
