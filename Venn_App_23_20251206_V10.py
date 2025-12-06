@@ -13,7 +13,7 @@ import os
 # ---------------------------------------------
 # 載入中文字型（避免亂碼）
 # ---------------------------------------------
-FONT_PATH = "NotoSansTC-Regular.otf"  # 字型放在同層資料夾
+FONT_PATH = "NotoSansTC-Regular.ttf"  # 字型放在同層資料夾
 if os.path.exists(FONT_PATH):
     prop = fm.FontProperties(fname=FONT_PATH)
 else:
