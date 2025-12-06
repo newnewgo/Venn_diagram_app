@@ -67,8 +67,8 @@ st.title("文氏圖產生器")
 # =====================
 # Sidebar 控件
 # =====================
-st.sidebar.markdown("## 請選擇文氏圖類型：")
-mode = st.sidebar.radio(["2 圓", "3 圓"])
+st.sidebar.markdown("## ⚙️ 設定")
+mode = st.sidebar.radio("請選擇文氏圖類型：", ["2 圓", "3 圓"])
 
 st.sidebar.markdown("## 🎨 顯示設定")
 show_labels = st.sidebar.checkbox("顯示圓的標籤（Set1 / Set2 / Set3）", value=True)
