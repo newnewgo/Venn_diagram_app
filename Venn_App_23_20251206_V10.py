@@ -17,7 +17,7 @@ FONT_PATH = "NotoSansTC-Regular.otf"  # 字型放在同層資料夾
 if os.path.exists(FONT_PATH):
     prop = fm.FontProperties(fname=FONT_PATH)
 else:
-    st.error("⚠️ 找不到字型檔 NotoSansTC-Regular.otf，請將檔案放在程式同目錄。")
+    st.error("⚠️ 找不到字型檔 NotoSansTC-Regular.ttf，請將檔案放在程式同目錄。")
     st.stop()
 
 # ---------------------------------------------
