@@ -101,7 +101,7 @@ if mode == "2 圓":
     else:
         fig, ax = plt.subplots(figsize=(fig_size, fig_size))
         v = venn2(subsets=(setA_size - intersection, setB_size - intersection, intersection),
-                  set_labels=("A集合", "B集合") if show_labels else ("", ""),
+                  set_labels=("A 集合", "B 集合") if show_labels else ("", ""),
                   ax=ax)
 
         # Set 顏色
@@ -186,7 +186,7 @@ else:
                   bc - abc,              # 011 = B∩C only
                   abc                    # 111 = A∩B∩C
                   ),
-                  set_labels=("集合 A", "集合 B", "集合 C") if show_labels else ("", "", ""),
+                  set_labels=("A 集合", "B 集合", "C 集合") if show_labels else ("", "", ""),
                   ax=ax)
         # Set 顏色
         if v.get_patch_by_id("100"): v.get_patch_by_id("100").set_color(a_color)
