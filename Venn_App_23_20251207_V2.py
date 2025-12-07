@@ -11,6 +11,19 @@ from matplotlib_venn import venn2, venn3
 from matplotlib import font_manager as fm
 import os
 
+# ======================================================
+# 🔧 補上缺失的 mix_colors() — 依 2 個 HEX 色碼混合新顏色
+# ======================================================
+def mix_colors(color1: str, color2: str) -> str:
+    """將兩個 HEX 顏色平均混合，回傳新的 HEX"""
+    try:
+        c1 = tuple(int(color1.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+        c2 = tuple(int(color2.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+
+        mixed = tuple((c1[i] + c2[i]) // 2 for i in range(3))
+        return '#%02x%02x%02x' % mixed
+    except:
+        return "#999999"  # fallback
     
 # =========================================
 # 載入中文字型（避免亂碼）
