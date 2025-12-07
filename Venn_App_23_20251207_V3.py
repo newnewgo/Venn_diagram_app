@@ -178,13 +178,13 @@ else:
     else:
         fig, ax = plt.subplots(figsize=(fig_size, fig_size))
         #v = venn3(subsets=(a_size, b_size, ab, c_size, ac, bc, abc),
-        v = venn3(subsets = (A - AB - AC + ABC,     # 100 = Only A
-                  B - AB - BC + ABC,     # 010 = Only B
-                  AB - ABC,              # 110 = A∩B only
-                  C - AC - BC + ABC,     # 001 = Only C
-                  AC - ABC,              # 101 = A∩C only
-                  BC - ABC,              # 011 = B∩C only
-                  ABC                    # 111 = A∩B∩C
+        v = venn3(subsets = (a_size - ab - ac + abc,     # 100 = Only A
+                  b_size - ab - bc + abc,     # 010 = Only B
+                  ab - abc,              # 110 = A∩B only
+                  c_size - ac - bc + abc,     # 001 = Only C
+                  ac - abc,              # 101 = A∩C only
+                  bc - abc,              # 011 = B∩C only
+                  abc                    # 111 = A∩B∩C
                   ),
                   set_labels=("集合 A", "集合 B", "集合 C") if show_labels else ("", "", ""),
                   ax=ax)
