@@ -11,7 +11,6 @@ from matplotlib_venn import venn2, venn3
 from matplotlib import font_manager as fm
 import os
 
-集合 
     
 # =========================================
 # 載入中文字型（避免亂碼）
