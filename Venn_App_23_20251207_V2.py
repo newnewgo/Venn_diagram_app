@@ -12,18 +12,28 @@ from matplotlib import font_manager as fm
 import os
 
 # ======================================================
-# 🔧 補上缺失的 mix_colors() — 依 2 個 HEX 色碼混合新顏色
+# 🔧 mix_colors() — 可混合 2 色或 3 色（HEX 格式）
 # ======================================================
-def mix_colors(color1: str, color2: str) -> str:
-    """將兩個 HEX 顏色平均混合，回傳新的 HEX"""
+def mix_colors(*colors):
+    """
+    接受 2 或 3 個 HEX 顏色，回傳平均混合後的 HEX 顏色
+    ex: mix_colors("#ff0000", "#00ff00")
+        mix_colors("#ff0000", "#00ff00", "#0000ff")
+    """
     try:
-        c1 = tuple(int(color1.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
-        c2 = tuple(int(color2.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+        rgb_list = []
 
-        mixed = tuple((c1[i] + c2[i]) // 2 for i in range(3))
-        return '#%02x%02x%02x' % mixed
-    except:
-        return "#999999"  # fallback
+        for color in colors:
+            rgb = tuple(int(color.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
+            rgb_list.append(rgb)
+
+        # 平均每個 channel
+        mixed = tuple(sum(channel[i] for channel in rgb_list) // len(rgb_list) for i in range(3))
+
+        return "#%02x%02x%02x" % mixed
+
+    except Exception:
+        return "#999999"  # fallback 顏色
     
 # =========================================
 # 載入中文字型（避免亂碼）
